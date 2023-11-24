@@ -30,4 +30,6 @@ Route::get('/send-form-add', function () {
     return view('form_add_credit');
 });
 
+//testing github
+
 Route::post('submit-form-add', [BankingController::class, 'addCredit']);
