@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BankingController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,25 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('main_menu');
+    return view('login_form');
 });
+
+Route::post('submit-login', [LoginController::class, 'submitLogin']);
+
+Route::get('/create-user', function () {
+    return view('create_user');
+});
+
+Route::post('create-user-send', [LoginController::class, 'createUser']);
+
+
+
+
+
+
+
+
+
 
 Route::get('/show-list', [BankingController::class, 'showAccounts']);
 
@@ -34,5 +52,3 @@ Route::get('/send-form-add', function () {
 //testing github
 
 Route::post('submit-form-add', [BankingController::class, 'addCredit']);
-
-Route::post('/register', [UserController::class, 'register']);
