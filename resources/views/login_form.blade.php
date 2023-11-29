@@ -18,7 +18,7 @@
       </div>
       <div class="conteneur_ligne">
         <label class="label_ligne" for="password">Password:</label>
-        <input class="input_ligne" type="text"  id="password" name="password"><br><br>
+        <input class="input_ligne" type="password"  id="password" name="password"><br><br>
       </div>
 
       <div class="conteneur_ligne">
