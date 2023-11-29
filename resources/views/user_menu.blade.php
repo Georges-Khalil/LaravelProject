@@ -8,9 +8,11 @@
     <body>
         <header>
         <h1>Main Menu</h1>
-<h3><a href="/send-form-create">Create Account</a></h3>
-<h3><a href="/send-form-add">Add Credit</a></h3>
-<h3><a href="/show-list">Display Accounts</a></h3>
+<h3><a href="/send-form-create">Create New Bank Account</a></h3>
+<h3><a href="/send-form-add">View Accounts</a></h3>
+<h3><a href="/show-list">Transfer Funds Between Accounts</a></h3>
+<h3><a href="/show-list">Transaction History</a></h3>
+<h3><a href="/show-list">Logout</a></h3>
         </header>
     </body>
 </html>

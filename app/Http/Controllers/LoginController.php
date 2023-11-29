@@ -17,7 +17,7 @@ class LoginController extends Controller
         // Check if the user exists and the password is correct
         if ($user && password_verify($password, $user->password)){
             $_SESSION['username'] = $username;
-            return redirect('controller.php'); // Use Laravel's redirect function
+            return redirect('/user-menu'); // Use Laravel's redirect function
         }
         else{
             return back()->with('error', 'Incorrect login'); // Redirect back with an error message

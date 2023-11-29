@@ -28,6 +28,10 @@ Route::get('/create-user', function () {
 
 Route::post('create-user-send', [LoginController::class, 'createUser']);
 
+Route::get('/user-menu', function () {
+    return view('user_menu');
+});
+
 
 
 
