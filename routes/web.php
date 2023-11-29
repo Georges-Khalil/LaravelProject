@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BankingController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,5 @@ Route::get('/send-form-add', function () {
 //testing github
 
 Route::post('submit-form-add', [BankingController::class, 'addCredit']);
+
+Route::post('/register', [UserController::class, 'register']);
