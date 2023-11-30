@@ -31,7 +31,7 @@ Route::post('create-user-send', [LoginController::class, 'createUser']);
 
 Route::get('/user-menu', function () {
     return view('user_menu');
-});
+})->middleware('checkUserSession');
 
 Route::get('/agent-menu', function () {
     return view('agent_menu');
@@ -41,11 +41,11 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/create-bank-account', function () {
     return view('form_create_bank_account');
-});
+})->middleware('checkUserSession');
 
 Route::post('submit-form-create-bank-account', [UserController::class, 'createBankAccount']);
 
-Route::get('/view-accounts', [UserController::class, 'accountsList']);
+Route::get('/view-accounts', [UserController::class, 'accountsList'])->middleware('checkUserSession');
 
 
 
