@@ -24,7 +24,25 @@
       <div class="conteneur_ligne">
         <label class="label_ligne"></label>
         <div class="input_ligne">
+            @if (session('error'))
+                <div style="color: red;">
+                    {{ session('error') }}
+                </div>
+            @endif
+        </div>
+      </div>
+
+      <div class="conteneur_ligne">
+        <label class="label_ligne"></label>
+        <div class="input_ligne">
           <input class="bt_envoyer" type="submit" value="Create">
+        </div>
+      </div>
+
+      <div class="conteneur_ligne">
+        <label class="label_ligne"></label>
+        <div class="input_ligne">
+          <a href='/'>Go back to login</a>
         </div>
       </div>
     

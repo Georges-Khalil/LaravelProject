@@ -1,10 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BankingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
-use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,21 +45,10 @@ Route::post('submit-form-create-bank-account', [UserController::class, 'createBa
 
 Route::get('/view-accounts', [UserController::class, 'accountsList'])->middleware('checkUserSession');
 
-
-
-
-
-
-
-
-
-
-Route::get('/show-list', [BankingController::class, 'showAccounts']);
-
-Route::get('/send-form-add', function () {
+Route::get('/transfer-funds-form', function () {
     return view('form_add_credit');
-});
+})->middleware('checkUserSession');
 
-//testing github
+Route::post('submit-form-transfer', [UserController::class, 'transferFunds']);
 
-Route::post('submit-form-add', [BankingController::class, 'addCredit']);
+Route::get('/view-transaction-history', [UserController::class, 'transactionHistory'])->middleware('checkUserSession');
