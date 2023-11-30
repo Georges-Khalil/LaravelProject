@@ -45,6 +45,8 @@ Route::get('/create-bank-account', function () {
 
 Route::post('submit-form-create-bank-account', [UserController::class, 'createBankAccount']);
 
+Route::get('/view-accounts', [UserController::class, 'accountsList']);
+
 
 
 
@@ -55,12 +57,6 @@ Route::post('submit-form-create-bank-account', [UserController::class, 'createBa
 
 
 Route::get('/show-list', [BankingController::class, 'showAccounts']);
-
-Route::get('/send-form-create', function () {
-    return view('form_create_account');
-});
-
-Route::post('submit-form-create', [BankingController::class, 'createAccount']);
 
 Route::get('/send-form-add', function () {
     return view('form_add_credit');

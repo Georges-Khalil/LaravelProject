@@ -9,7 +9,7 @@
         <header>
         <h1>Main Menu</h1>
 <h3><a href="/create-bank-account">Create New Bank Account</a></h3>
-<h3><a href="/send-form-add">View Accounts</a></h3>
+<h3><a href="/view-accounts">View Accounts</a></h3>
 <h3><a href="/show-list">Transfer Funds Between Accounts</a></h3>
 <h3><a href="/show-list">Transaction History</a></h3>
 <h3><a href="/logout">Logout</a></h3>

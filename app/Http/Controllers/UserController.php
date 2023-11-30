@@ -17,4 +17,10 @@ class UserController extends Controller
         $account->save();
         return redirect('/user-menu');
     }
+
+    function accountsList()
+    {
+        $accounts = Account::where('username', session('username'))->get();
+        return view('accounts_list', ['accounts' => $accounts]);
+    }
 }
