@@ -32,6 +32,10 @@ Route::get('/user-menu', function () {
     return view('user_menu');
 });
 
+Route::get('/agent-menu', function () {
+    return view('agent_menu');
+});
+
 
 
 
