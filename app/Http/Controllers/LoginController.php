@@ -11,12 +11,10 @@ class LoginController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
         
-        // Use the User model to fetch the user from the database
         $user = User::where('username', $username)->first();
         
-        // Check if the user exists and the password is correct
         if ($user && password_verify($password, $user->password)){
-            $_SESSION['username'] = $username;
+            $request->session()->put('username', $username);
             if($user->isagent == 1){
                 return redirect('/agent-menu');
             }
@@ -25,7 +23,7 @@ class LoginController extends Controller
             }
         }
         else{
-            return back()->with('error', 'Incorrect login'); // Redirect back with an error message
+            return back()->with('error', 'Incorrect login');
         }
     }
 
@@ -33,19 +31,22 @@ class LoginController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
         
-        // Use the User model to fetch the user from the database
         $user = User::where('username', $username)->first();
         
-        // Check if the user exists and the password is correct
         if ($user){
-            return back()->with('error', 'Username already exists'); // Redirect back with an error message
+            return back()->with('error', 'Username already exists');
         }
         else{
             $user = new User();
             $user->username = $username;
             $user->password = password_hash($password, PASSWORD_DEFAULT);
             $user->save();
-            return redirect('/'); // Use Laravel's redirect function
+            return redirect('/');
         }
+    }
+
+    public function logout(Request $request){
+        $request->session()->forget('username');
+        return redirect('/');
     }
 }

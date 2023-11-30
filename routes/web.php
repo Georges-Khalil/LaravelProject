@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BankingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,14 @@ Route::get('/user-menu', function () {
 Route::get('/agent-menu', function () {
     return view('agent_menu');
 });
+
+Route::get('/logout', [LoginController::class, 'logout']);
+
+Route::get('/create-bank-account', function () {
+    return view('form_create_bank_account');
+});
+
+Route::post('submit-form-create-bank-account', [UserController::class, 'createBankAccount']);
 
 
 
