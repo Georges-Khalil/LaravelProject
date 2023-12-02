@@ -7,5 +7,5 @@ use App\Models\Account;
 
 class AgentController extends Controller
 {
-    //
+    
 }

@@ -47,9 +47,15 @@ Route::post('submit-form-create-bank-account', [UserController::class, 'createBa
 Route::get('/view-accounts', [UserController::class, 'accountsList'])->middleware('checkUserSession');
 
 Route::get('/transfer-funds-form', function () {
-    return view('form_add_credit');
+    return view('form_transfer_funds');
 })->middleware('checkUserSession');
 
 Route::post('submit-form-transfer', [UserController::class, 'transferFunds']);
 
 Route::get('/view-transaction-history', [UserController::class, 'transactionHistory'])->middleware('checkUserSession');
+
+Route::get('/username-input', function () {
+    return view('form_username_input');
+})->middleware('checkAgentSession');
+
+Route::post('submit-form-username-input', [LoginController::class, 'usernameInput']);

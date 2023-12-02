@@ -46,6 +46,19 @@ class LoginController extends Controller
         }
     }
 
+    public function usernameInput(Request $request){
+        $username = $request->username;
+        $user = User::where('username', $username)->first();
+        if ($user){
+            session(['username' => $username]);
+            session()->forget('isagent');
+            return redirect('/user-menu');
+        }
+        else{
+            return back()->with('error', 'Username does not exist');
+        }
+    }
+
     public function logout(Request $request){
         $request->session()->forget('username');
         return redirect('/');
