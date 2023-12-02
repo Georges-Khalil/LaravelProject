@@ -11,9 +11,9 @@ class UserController extends Controller
 {
     function createBankAccount(Request $request)
     {
-        $existingAccount = Account::where('username', session('username'))
-        ->where('account_name', $request->accountName)
-            ->first();
+        $existingAccount = Account::where('username', session('username'))  //username is the session variable, it is set when the user logs in
+        ->where('account_name', $request->accountName)                      //accountName is the name of the input field      
+            ->first();                                                      //returns the first record that matches the query
 
         if ($existingAccount) {
             return redirect('/create-bank-account')->with('error', 'Account name already exists');

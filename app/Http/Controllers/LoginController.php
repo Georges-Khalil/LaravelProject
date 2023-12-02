@@ -46,7 +46,7 @@ class LoginController extends Controller
         }
     }
 
-    public function usernameInput(Request $request){
+    public function accessUser(Request $request){
         $username = $request->username;
         $user = User::where('username', $username)->first();
         if ($user){
@@ -61,6 +61,7 @@ class LoginController extends Controller
 
     public function logout(Request $request){
         $request->session()->forget('username');
+        $request->session()->forget('isagent');
         return redirect('/');
     }
 }

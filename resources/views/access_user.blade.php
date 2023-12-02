@@ -15,7 +15,7 @@
 
       <td>Username :</td>
       <td>
-        <form action="/submit-form-username-input" method="POST"> @csrf
+        <form action="/submit-access-user" method="POST"> @csrf
           <input name="username" type="text" />
       </td>
     </tr>
@@ -31,7 +31,7 @@
     <tr>
       <td colspan="2">
         <div align="center">
-          <input type="submit" name="submit" value="Submit" />
+          <input type="submit" name="submit" value="Access" />
         </div>
         </form>
       </td>
@@ -39,7 +39,7 @@
     </tr>
 
   </table>
-  <p style="margin-left:auto;margin-right:auto;width:fit-content"><a href="/user-menu">Return to Main Menu</a></p>
+  <p style="margin-left:auto;margin-right:auto;width:fit-content"><a href="/agent-menu">Return to Main Menu</a></p>
 
 </body>
 
