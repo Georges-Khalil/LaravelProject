@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AgentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,7 @@ Route::get('/user-menu', function () {
 
 Route::get('/agent-menu', function () {
     return view('agent_menu');
-});
+})->middleware('checkAgentSession');
 
 Route::get('/logout', [LoginController::class, 'logout']);
 

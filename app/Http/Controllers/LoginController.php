@@ -16,6 +16,7 @@ class LoginController extends Controller
         if ($user && password_verify($password, $user->password)){
             $request->session()->put('username', $username);
             if($user->isagent == 1){
+                $request->session()->put('isagent', 1);
                 return redirect('/agent-menu');
             }
             else{
