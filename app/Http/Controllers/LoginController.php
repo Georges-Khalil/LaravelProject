@@ -31,10 +31,10 @@ class LoginController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
         
-        $user = User::where('username', $username)->first();
+        $user = User::where('username', $username)->first();    //check if username already exists
         
         if ($user){
-            return back()->with('error', 'Username already exists');
+            return back()->with('error', 'Username already exists');    //if username exists, return to create_user.blade.php with error message
         }
         else{
             $user = new User();

@@ -52,3 +52,10 @@ Route::get('/transfer-funds-form', function () {
 Route::post('submit-form-transfer', [UserController::class, 'transferFunds']);
 
 Route::get('/view-transaction-history', [UserController::class, 'transactionHistory'])->middleware('checkUserSession');
+
+
+Route::get('/access-user', function () {
+    return view('access_user');
+});
+
+Route::post('submit-access-user', [AgentController::class, 'accessUser']);  //this is the route that is called when the form is submitted in access_user.blade.php view
