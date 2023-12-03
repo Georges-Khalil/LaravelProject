@@ -59,3 +59,7 @@ Route::get('/access-user', function () {
 })->middleware('checkAgentSession');
 
 Route::post('submit-access-user', [LoginController::class, 'accessUser']);
+
+Route::get('/view-accounts-agent', [AgentController::class, 'accountsList'])->middleware('checkAgentSession');
+
+Route::post('change-status', [AgentController::class, 'changeStatus'])->middleware('checkAgentSession');
