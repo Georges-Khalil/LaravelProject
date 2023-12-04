@@ -41,5 +41,74 @@ class AgentController extends Controller
 
         return redirect('/view-accounts-agent');
     }
+
+    public function depositWithdraw(Request $request)
+    {
+        $username = $request->input('username');
+        $account_name = $request->input('account_name');
+        $amount = $request->input('amount');
+        $currency = $request->input('currency');
+
+        $account = DB::table('accounts')
+            ->where('username', $username)
+            ->where('account_name', $account_name)
+            ->first();
+        
+        if ($account == null) {
+            return redirect('/deposit-withdraw')->with('error', 'Account not found');
+        }
+        if($account->approved == 0){
+            return redirect('/deposit-withdraw')->with('error', 'Account not open');
+        }
+        if(!is_numeric($amount)){
+            return redirect('/deposit-withdraw')->with('error', 'Amount must be numeric');
+        }
+
+        $balanceUSD = $this->convertToUSD($account->amount, $account->currency);
+        $amountUSD = $this->convertToUSD($amount, $currency);
+        if($amountUSD <= 0){
+            if($balanceUSD < abs($amountUSD)){
+                return redirect('/deposit-withdraw')->with('error', 'Insufficient funds');
+            }
+            $balanceUSD = $balanceUSD + $amountUSD;
+            DB::table('accounts')
+            ->where('username', $username)
+            ->where('account_name', $account_name)
+            ->update(['amount' => $this->convertFromUSD($balanceUSD, $account->currency)]);
+
+        }
+        else{
+            $balanceUSD = $balanceUSD + $amountUSD;
+            DB::table('accounts')
+            ->where('username', $username)
+            ->where('account_name', $account_name)
+            ->update(['amount' => $this->convertFromUSD($balanceUSD, $account->currency)]);
+        }
+        return redirect('/agent-menu');
+    }
+
+    function convertToUSD($amount, $currency)
+    {
+        switch ($currency) {
+            case 'EUR':
+                return $amount / 1.19;
+            case 'LBP':
+                return $amount / 89700;
+            default:
+                return $amount;
+        }
+    }
+
+    function convertFromUSD($amount, $currency)
+    {
+        switch ($currency) {
+            case 'EUR':
+                return $amount * 1.19;
+            case 'LBP':
+                return $amount * 89700;
+            default:
+                return $amount;
+        }
+    }
 }
 

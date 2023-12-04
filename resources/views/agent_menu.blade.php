@@ -10,7 +10,7 @@
         <h1>Main Menu</h1>
 <h3><a href="/access-user">Access User Operations</a></h3>
 <h3><a href="/view-accounts-agent">View All Accounts</a></h3>
-<h3><a href="/show-list">Deposit or Withdrawal</a></h3>
+<h3><a href="/deposit-withdraw">Deposit or Withdrawal</a></h3>
 <h3><a href="/logout">Logout</a></h3>
         </header>
     </body>

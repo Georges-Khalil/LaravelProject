@@ -63,3 +63,9 @@ Route::post('submit-access-user', [LoginController::class, 'accessUser']);
 Route::get('/view-accounts-agent', [AgentController::class, 'accountsList'])->middleware('checkAgentSession');
 
 Route::post('change-status', [AgentController::class, 'changeStatus'])->middleware('checkAgentSession');
+
+Route::get('/deposit-withdraw', function () {
+    return view('form_deposit_withdraw');
+})->middleware('checkAgentSession');
+
+Route::post('submit-form-deposit-withdraw', [AgentController::class, 'depositWithdraw'])->middleware('checkAgentSession');
