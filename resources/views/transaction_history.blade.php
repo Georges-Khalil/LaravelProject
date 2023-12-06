@@ -44,7 +44,10 @@
                     break;
             }
 
-            echo "<tr><td>$transaction->username</td><td>$transaction->account_name</td><td>$symbol$transaction->transaction_amount</td><td>$transaction->receiving_username</td><td>$transaction->receiving_account_name</td><td>$transaction->created_at</td></tr>";
+            $transactionType = $transaction->username == $transaction->receiving_username && $transaction->account_name == $transaction->receiving_account_name ? 'Deposit/Withdrawal' : $transaction->receiving_username;
+            $transactionAccountType = $transaction->username == $transaction->receiving_username && $transaction->account_name == $transaction->receiving_account_name ? 'Deposit/Withdrawal' : $transaction->receiving_account_name;
+
+            echo "<tr><td>$transaction->username</td><td>$transaction->account_name</td><td>$symbol$transaction->transaction_amount</td><td>$transactionType</td><td>$transactionAccountType</td><td>$transaction->created_at</td></tr>";        
         }
         ?>
 

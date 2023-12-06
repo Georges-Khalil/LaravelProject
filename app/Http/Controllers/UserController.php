@@ -78,6 +78,10 @@ class UserController extends Controller
             return redirect('/transfer-funds-form')->with('error', 'Recipient account does not exist');
         }
 
+        if ($senderAccount->username == $recipientAccount->username && $senderAccount->account_name == $recipientAccount->account_name) {
+            return redirect('/transfer-funds-form')->with('error', 'Sender and recipient accounts cannot be the same');
+        }
+
         if($senderAccount->approved != 1){
             return redirect('/transfer-funds-form')->with('error', 'Sender account is not open');
         }

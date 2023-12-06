@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Account;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\DB;
 
 
@@ -90,6 +91,16 @@ class AgentController extends Controller
             ->where('account_name', $account_name)
             ->update(['amount' => $this->convertFromUSD($balanceUSD, $account->currency)]);
         }
+
+        $transaction = new Transaction;
+        $transaction->username = $account->username;
+        $transaction->account_name = $account->account_name;
+        $transaction->transaction_amount = $amount;
+        $transaction->currency = $currency;
+        $transaction->receiving_username = $account->username;
+        $transaction->receiving_account_name = $account->account_name;
+        $transaction->save();
+
         return redirect('/agent-menu');
     }
 
