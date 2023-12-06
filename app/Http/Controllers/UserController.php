@@ -42,6 +42,23 @@ class UserController extends Controller
         return view('transaction_history', ['transactions' => $transactions]);
     }
 
+    function filterTransactionHistory(Request $request)
+    {
+        $username = session('username');
+
+        $sentTransactions = Transaction::where('username', $username)
+            ->where('account_name', $request->account_name)
+            ->get();
+
+        $receivedTransactions = Transaction::where('receiving_username', $username)
+            ->where('receiving_account_name', $request->account_name)
+            ->get();
+
+        $transactions = $sentTransactions->concat($receivedTransactions);
+
+        return view('transaction_history', ['transactions' => $transactions]);
+    }
+
     function transferFunds(Request $request)
     {
         $senderUsername = session('username');

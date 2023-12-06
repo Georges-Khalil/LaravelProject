@@ -54,6 +54,8 @@ Route::post('submit-form-transfer', [UserController::class, 'transferFunds']);
 
 Route::get('/view-transaction-history', [UserController::class, 'transactionHistory'])->middleware('checkUserSession');
 
+Route::post('filter-transaction-history', [UserController::class, 'filterTransactionHistory'])->middleware('checkUserSession');
+
 Route::get('/access-user', function () {
     return view('access_user');
 })->middleware('checkAgentSession');

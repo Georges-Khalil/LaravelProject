@@ -25,7 +25,7 @@
             </td>
             </tr>
             <tr>
-                <td>Amount to Transfer :</td>
+                <td>Amount to Change :</td>
                 <td><input name="amount" type="text" /></td>
             </tr>
             <tr>
