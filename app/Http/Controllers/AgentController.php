@@ -30,8 +30,14 @@ class AgentController extends Controller
             DB::table('accounts')
                 ->where('username', $username)
                 ->where('account_name', $account_name)
-                ->update(['approved' => 0]);
-        } 
+                ->update(['approved' => 2]);
+        }
+        else if ($account->approved == 2) {
+            DB::table('accounts')
+                ->where('username', $username)
+                ->where('account_name', $account_name)
+                ->update(['approved' => 1]);
+        }
         else {
             DB::table('accounts')
                 ->where('username', $username)
@@ -57,7 +63,7 @@ class AgentController extends Controller
         if ($account == null) {
             return redirect('/deposit-withdraw')->with('error', 'Account not found');
         }
-        if($account->approved == 0){
+        if($account->approved != 1){
             return redirect('/deposit-withdraw')->with('error', 'Account not open');
         }
         if(!is_numeric($amount)){

@@ -78,11 +78,11 @@ class UserController extends Controller
             return redirect('/transfer-funds-form')->with('error', 'Recipient account does not exist');
         }
 
-        if($senderAccount->approved == 0){
-            return redirect('/transfer-funds-form')->with('error', 'Sender account is closed');
+        if($senderAccount->approved != 1){
+            return redirect('/transfer-funds-form')->with('error', 'Sender account is not open');
         }
-        if($recipientAccount->approved == 0){
-            return redirect('/transfer-funds-form')->with('error', 'Recipient account is closed');
+        if($recipientAccount->approved != 1){
+            return redirect('/transfer-funds-form')->with('error', 'Recipient account is not open');
         }
 
         if (!is_numeric($request->amount)) {

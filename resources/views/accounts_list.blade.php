@@ -36,8 +36,11 @@
             if($account->approved == 1){
                 $approved = 'Open';
             }
-            else{
+            else if($account->approved == 2){
                 $approved = 'Closed';
+            }
+            else{
+                $approved = 'Pending';
             }
             echo "<tr><td>$account->account_name</td><td>$symbol$account->amount</td><td>$approved</td></tr>";
         }
