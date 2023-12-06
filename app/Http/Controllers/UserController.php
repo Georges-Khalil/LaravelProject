@@ -129,7 +129,7 @@ class UserController extends Controller
     {
         switch ($currency) {
             case 'EUR':
-                return $amount / 1.19;
+                return $amount / 0.93;
             case 'LBP':
                 return $amount / 89700;
             default:
@@ -141,7 +141,7 @@ class UserController extends Controller
     {
         switch ($currency) {
             case 'EUR':
-                return $amount * 1.19;
+                return $amount * 0.93;
             case 'LBP':
                 return $amount * 89700;
             default:
