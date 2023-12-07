@@ -49,7 +49,7 @@ class LoginController extends Controller
     public function accessUser(Request $request){
         $username = $request->username;
         $user = User::where('username', $username)->first();
-        if ($user){
+        if ($user && $user->isagent == 0){
             session(['username' => $username]);
             session()->forget('isagent');
             return redirect('/user-menu');
