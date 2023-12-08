@@ -12,7 +12,8 @@ class AgentController extends Controller
 {
     public function accountsList()
     {
-        $accounts = Account::all();
+        // get all accounts, sorted by approved status
+        $accounts = Account::orderBy('approved', 'asc')->get();
 
         return view('accounts_list_agent', ['accounts' => $accounts]);
     }
